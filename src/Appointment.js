@@ -18,13 +18,26 @@ export default function Appointment() {
     setOpen(false);
   };
 
+  const handleDelete = (index)=> {
+
+    let p = [...array].filter(y=> y.id != index);
+
+
+
+    
+
+    setarray(p);
+
+
+  }
+
   return (
     <div>
              <Button variant="outlined" onClick={handleClickOpen}>
         Add Details
       </Button>
 
-        <DisplayData rows={array} />
+        <DisplayData rows={array}  removedata= {handleDelete}/>
 
       <Model  open={open}  
       handleClickOpen={handleClickOpen} 

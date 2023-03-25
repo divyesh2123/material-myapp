@@ -22,6 +22,17 @@ export default function DisplayData(data) {
             field: 'Zipcode',
             headerName: 'ZipCode',
             width: 90,
+        },
+        {
+          field: "delete",
+          headerName: "Delete",
+          width: 90,
+          renderCell: (params) => {
+
+            console.log(params);
+             // you will find row info in params
+            return (<button onClick={()=>{ data.removedata(params.row.id) }}>Delete</button>)
+          }
         }
        
       ];
