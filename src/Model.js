@@ -23,6 +23,31 @@ export default function Model(props) {
       });
 
 
+      React.useEffect(()=> {
+
+        if(props.id > 0)
+        {
+          let myobj = props.array.find((i)=> i.id == props.id);
+          setData(myobj);
+
+        }
+        else
+        {
+          setData({
+            PatientName : "",
+            AppointmentDate: "",
+            Id: "",
+            City: "",
+            State: "",
+            Zipcode: ""
+
+          })
+        }
+
+
+      },[props.id])
+
+
       const formHandler = (e)=> {
         setData({...data,[e.target.name] : e.target.value})
       }
@@ -34,8 +59,27 @@ export default function Model(props) {
       const saveData = ()=> {
 
         let d = [...props.array];
+        if(props.id < 0)
+        {
+      
         d.push({...data,id: d.length+1});
-        props.setarray(d)
+        }
+        else
+        {
+            let myobj = d.find((v)=> {
+
+              return v.id == props.id
+            });
+
+            myobj.AppointmentDate = data.AppointmentDate;
+            myobj.City= data.City;
+            myobj.State = data.State;
+            myobj.PatientName = data.PatientName;
+            myobj.Zipcode = data.Zipcode;
+        }
+        props.setarray(d);
+        props.setId(-1);
+
         props.handleClose();
       }
 
@@ -55,6 +99,8 @@ export default function Model(props) {
             fullWidth
             variant="standard"
             onChange={formHandler}
+            value = {data.PatientName}
+
           />
 
 
@@ -62,7 +108,7 @@ export default function Model(props) {
 
 <DatePicker label="Select Appoitnment date"  fullWidth  variant="standard"  margin="dense" 
  onChange={dateHandler}
-
+ value = {data.AppointmentDate}
 />
 
 
@@ -75,6 +121,7 @@ export default function Model(props) {
             name='City'
             fullWidth
             variant="standard"
+            value={data.City}
             onChange={formHandler}
           />
 
@@ -88,6 +135,7 @@ export default function Model(props) {
             type="text"
             fullWidth
             variant="standard"
+            value={data.State}
             onChange={formHandler}
           />
 
@@ -101,6 +149,7 @@ export default function Model(props) {
             type="text"
             fullWidth
             variant="standard"
+            value={data.Zipcode}
             onChange={formHandler}
           />
 
