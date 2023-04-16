@@ -11,15 +11,25 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 
+
 import Employee from './Employee';
 import Appointment from './Appointment';
 import Albums from './Albums';
+import Registration from './Registration';
+import Container from 'react-bootstrap/Container';
+import Login from './Login';
+import DisplayAccount from './DisplayAccount';
+import EmployeeM from './EmployeeM';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-    <Albums />
+    <Container>
+    <DisplayAccount />
+    <Login/>
+    <EmployeeM/>
+    </Container>
     </LocalizationProvider>
   </React.StrictMode>
 );
