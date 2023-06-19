@@ -27,21 +27,26 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import Counter from './Counter';
 import UserList from './UserList';
+import EmployeeNew from './EmployeeNew';
+import CounterSlice from './CounterSlice';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Container>
-
-      <Provider store={store}>
-
-        <UserList/>
-
-
-      </Provider>
       
-      <FormWithValidation></FormWithValidation>
+
+       <Provider store={store}>
+
+        <CounterSlice/>
+
+
+      </Provider> 
+
+      {/* <App/> */}
+      
+     
     </Container>
     </LocalizationProvider>
   </React.StrictMode>
