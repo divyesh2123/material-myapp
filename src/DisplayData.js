@@ -5,7 +5,13 @@ export default function DisplayData(data) {
 
     const columns = [
         { field: 'Id', headerName: 'ID', width: 70 },
-        { field: 'PatientName', headerName: 'Patient Name', width: 130 },
+        { field: 'PatientName', headerName: 'Patient Name', width: 130 ,
+
+     
+      
+      
+      
+      },
         { field: 'AppointmentDate', headerName: 'Appointment Date', width: 330 },
         {
           field: 'City',

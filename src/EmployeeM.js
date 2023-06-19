@@ -12,6 +12,10 @@ export default function EmployeeM() {
     setdata(e.target.value)
  }
 
+ const removeitem = (e)=> {
+
+ }
+
  const SaveData = (e)=> {
 
     let d = [...items];
@@ -27,7 +31,7 @@ export default function EmployeeM() {
         <input type='text' onChange={myhandler} />
         <input type='button' value="save"  onClick={SaveData}/>
 
-        <EmployeeDChild item={items}></EmployeeDChild>
+        <EmployeeDChild item={items} myremoveItem  = {removeitem}></EmployeeDChild>
 
     </div>
   )

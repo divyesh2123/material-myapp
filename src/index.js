@@ -20,15 +20,28 @@ import Container from 'react-bootstrap/Container';
 import Login from './Login';
 import DisplayAccount from './DisplayAccount';
 import EmployeeM from './EmployeeM';
+import MyForm from './MyForm';
+import FormWithValidation from './FormWithValidation';
+import { Provider } from 'react-redux';
+
+import store from './store/store';
+import Counter from './Counter';
+import UserList from './UserList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Container>
-    <DisplayAccount />
-    <Login/>
-    <EmployeeM/>
+
+      <Provider store={store}>
+
+        <UserList/>
+
+
+      </Provider>
+      
+      <FormWithValidation></FormWithValidation>
     </Container>
     </LocalizationProvider>
   </React.StrictMode>

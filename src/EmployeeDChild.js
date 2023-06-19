@@ -8,4 +8,14 @@ import React from 'react'
   )
 }
 
-export default React.memo(EmployeeDChild);
+export default React.memo(EmployeeDChild, (pre,next) => {
+
+  if(pre.item.length == next.item.length)
+  {
+    return true;
+  }
+  else
+  {
+  return false;
+  }
+});
