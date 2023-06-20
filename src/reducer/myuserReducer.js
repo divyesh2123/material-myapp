@@ -3,6 +3,7 @@ const initialState = {
     isLoading: false,
     data : [],
     error: {}
+    
 }
 
 export default (state = initialState, { type, payload }) => {
