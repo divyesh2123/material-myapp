@@ -29,6 +29,7 @@ import Counter from './Counter';
 import UserList from './UserList';
 import EmployeeNew from './EmployeeNew';
 import CounterSlice from './CounterSlice';
+import MyUser from './MyUser';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -39,7 +40,7 @@ root.render(
 
        <Provider store={store}>
 
-        <CounterSlice/>
+        <MyUser/>
 
 
       </Provider> 
