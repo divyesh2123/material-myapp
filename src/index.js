@@ -42,7 +42,7 @@ root.render(
 
        <Provider store={store}>
 
-        <App/>
+        <CounterSlice/>
 
 
       </Provider> 
