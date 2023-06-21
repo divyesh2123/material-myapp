@@ -31,6 +31,7 @@ import EmployeeNew from './EmployeeNew';
 import CounterSlice from './CounterSlice';
 import MyUser from './MyUser';
 import CounterSaga from './CounterSaga';
+import Product from './Product';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -41,7 +42,7 @@ root.render(
 
        <Provider store={store}>
 
-        <CounterSaga/>
+        <App/>
 
 
       </Provider> 
