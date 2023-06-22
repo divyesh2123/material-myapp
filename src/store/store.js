@@ -14,13 +14,15 @@
 
 
  import { configureStore } from "@reduxjs/toolkit";
- import counterReducerData from '../slice/counterSlice'
+ import counterReducerData from '../slice/counterSlice';
+ import userReducerData from '../slice/userSlice.js';
 
 /// export default store;
 
 export const store = configureStore({
    reducer: {
-counter: counterReducerData
+counter: counterReducerData,
+user:  userReducerData
    }
  })
 
