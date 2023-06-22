@@ -33,6 +33,8 @@ import MyUser from './MyUser';
 import CounterSaga from './CounterSaga';
 import Product from './Product';
 import UserSaga from './UserSaga';
+import ToDoList from './ToDoList';
+import ReactUserData from './ReactUserData';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -43,7 +45,9 @@ root.render(
 
        <Provider store={store}>
 
-        <CounterSlice/>
+         <ToDoList/> 
+
+        {/* <ReactUserData text="This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript  This is the javascript This is the javascript"/> */}
 
 
       </Provider> 
