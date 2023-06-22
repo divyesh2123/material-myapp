@@ -32,6 +32,7 @@ import CounterSlice from './CounterSlice';
 import MyUser from './MyUser';
 import CounterSaga from './CounterSaga';
 import Product from './Product';
+import UserSaga from './UserSaga';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
