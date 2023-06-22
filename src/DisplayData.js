@@ -3,6 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 
 export default function DisplayData(data) {
 
+  const [input,setinput]= useState('')
 
   const getallData =  ()=> {
 
@@ -63,6 +64,18 @@ export default function DisplayData(data) {
        
       ];
 
+      const changeHandeler = (e)=> {
+        setinput(e.target.value);
+      }
+
+      const searchData = ()=> {
+
+        fetch("https://itchy-plum-caridea.cyclic.app/api/tutorials?title="+ input).then(y=> y.json())
+        .then(u=> {
+          setRows(u);
+        })
+      }
+
       const [rows,setRows] = useState([])
 
       useEffect(  ()=> {
@@ -72,6 +85,9 @@ export default function DisplayData(data) {
       },[data])
   return (
     <div style={{ height: 400, width: '100%' }}>
+
+      <input type='text'  onChange={changeHandeler}/>
+      <input type='button' value="save" onClick={searchData} />
     <DataGrid
       rows={rows}
       columns={columns}
