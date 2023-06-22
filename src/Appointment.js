@@ -24,13 +24,7 @@ export default function Appointment() {
 
   const handleDelete = (index)=> {
 
-    let p = [...array].filter(y=> y.id != index);
-
-
-
     
-
-    setarray(p);
 
 
   }
@@ -51,7 +45,7 @@ export default function Appointment() {
         Add Details
       </Button>
 
-        <DisplayData rows={array}  removedata= {handleDelete}    setId= {myid}/>
+        <DisplayData rows={array}     setId= {myid}/>
 
       <Model  open={open}  
       handleClickOpen={handleClickOpen} 

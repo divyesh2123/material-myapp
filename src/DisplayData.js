@@ -1,34 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 
 export default function DisplayData(data) {
 
+
+  const getallData =  ()=> {
+
+    fetch("https://itchy-plum-caridea.cyclic.app/api/tutorials").then(y=> y.json())
+    .then(y=> {
+      setRows(y)
+    });
+  }
+
     const columns = [
-        { field: 'Id', headerName: 'ID', width: 70 },
-        { field: 'PatientName', headerName: 'Patient Name', width: 130 ,
+        { field: 'id', headerName: 'ID', width: 300 },
+        { field: 'title', headerName: 'title', width: 130 ,
 
      
       
       
       
       },
-        { field: 'AppointmentDate', headerName: 'Appointment Date', width: 330 },
-        {
-          field: 'City',
-          headerName: 'City',
-          width: 90,
-        },
-        {
-            field: 'State',
-            headerName: 'State',
-            sortable: false,
-            width: 160,
-        },
-        {
-            field: 'Zipcode',
-            headerName: 'ZipCode',
-            width: 90,
-        },
+        { field: 'description', headerName: 'description', width: 330 },
+       
         {
           field: "delete",
           headerName: "Delete",
@@ -37,7 +31,21 @@ export default function DisplayData(data) {
 
             console.log(params);
              // you will find row info in params
-            return (<button onClick={()=>{ data.removedata(params.row.id) }}>Delete</button>)
+            return (<button onClick={()=>{ 
+              
+              
+            
+
+              
+            
+              fetch(`https://itchy-plum-caridea.cyclic.app/api/tutorials/${params.row.id}`,{
+                method : "delete"
+              }).then(y=> y.json())
+              .then(y=> {
+               
+         getallData();
+              });
+            }}>Delete</button>)
           }
         },
 
@@ -54,10 +62,18 @@ export default function DisplayData(data) {
         }
        
       ];
+
+      const [rows,setRows] = useState([])
+
+      useEffect(  ()=> {
+
+         getallData();
+      
+      },[data])
   return (
     <div style={{ height: 400, width: '100%' }}>
     <DataGrid
-      rows={data.rows}
+      rows={rows}
       columns={columns}
       pageSize={5}
       rowsPerPageOptions={[5]}

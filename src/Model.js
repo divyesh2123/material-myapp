@@ -13,35 +13,25 @@ export default function Model(props) {
 
 
     const [data,setData] =  React.useState({
-        PatientName : "",
-        AppointmentDate: "",
+      title : "",
+      description: "",
         Id: "",
-        City: "",
-        State: "",
-        Zipcode: ""
-    
+       
       });
 
 
       React.useEffect(()=> {
 
-        if(props.id > 0)
+      
+        if(props.id != -1 )
         {
-          let myobj = props.array.find((i)=> i.id == props.id);
-          setData(myobj);
 
-        }
-        else
-        {
-          setData({
-            PatientName : "",
-            AppointmentDate: "",
-            Id: "",
-            City: "",
-            State: "",
-            Zipcode: ""
-
+          fetch(`https://itchy-plum-caridea.cyclic.app/api/tutorials/${props.id}`)
+          .then(y=>y.json())
+          .then(y=> {
+            setData(y);
           })
+
         }
 
 
@@ -52,35 +42,33 @@ export default function Model(props) {
         setData({...data,[e.target.name] : e.target.value})
       }
 
-      const dateHandler = (e) =>{
-        setData({...data,"AppointmentDate" : e})
-      }
-
+    
       const saveData = ()=> {
 
-        let d = [...props.array];
-        if(props.id < 0)
+        let url = "https://itchy-plum-caridea.cyclic.app/api/tutorials";
+        let method="post";
+
+        if(props.id != -1 )
         {
-      
-        d.push({...data,id: d.length+1});
+          url = `https://itchy-plum-caridea.cyclic.app/api/tutorials/${props.id}`;
+          method ="PUT"
+
         }
-        else
-        {
-            let myobj = d.find((v)=> {
+       
+          fetch(url,{
+            method : method,
+            body: JSON.stringify(data),
+            headers : {
+              'Content-Type': "application/json"
+            }
+          }).then(y=>y.json()).then(y=> {
 
-              return v.id == props.id
-            });
+            props.setId(-1);
 
-            myobj.AppointmentDate = data.AppointmentDate;
-            myobj.City= data.City;
-            myobj.State = data.State;
-            myobj.PatientName = data.PatientName;
-            myobj.Zipcode = data.Zipcode;
-        }
-        props.setarray(d);
-        props.setId(-1);
+            props.handleClose();
 
-        props.handleClose();
+          })
+       
       }
 
 
@@ -92,66 +80,37 @@ export default function Model(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="name"
-            name='PatientName'
-            label="Patient Name"
+            id="title"
+            name='title'
+            label="title"
             type="text"
             fullWidth
             variant="standard"
             onChange={formHandler}
-            value = {data.PatientName}
+            value = {data.title}
 
           />
 
 
 
 
-<DatePicker label="Select Appoitnment date"  fullWidth  variant="standard"  margin="dense" 
- onChange={dateHandler}
- value = {data.AppointmentDate}
-/>
 
 
 <TextField
             autoFocus
             margin="dense"
-            id="city"
-            label="Patient city"
+            id="description"
+            label="description"
             type="text"
-            name='City'
+            name='description'
             fullWidth
             variant="standard"
-            value={data.City}
+            value={data.description}
             onChange={formHandler}
           />
 
 
-<TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            name="State"
-            label="Patient state"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={data.State}
-            onChange={formHandler}
-          />
 
-
-<TextField
-            autoFocus
-            margin="dense"
-            id="zipcode"
-            name="Zipcode"
-            label="Patient zipcode"
-            type="text"
-            fullWidth
-            variant="standard"
-            value={data.Zipcode}
-            onChange={formHandler}
-          />
 
 
 
