@@ -39,10 +39,13 @@ export default function DisplayData(data) {
 
               
             
-              fetch(`https://itchy-plum-caridea.cyclic.app/api/tutorials/${params.row.id}`,{
+              fetch(`https://itchy-plum-caridea.cyclic.app/api/tutorials/${params.row.id}`,
+              {
                 method : "delete"
               }).then(y=> y.json())
               .then(y=> {
+
+                
                
          getallData();
               });
