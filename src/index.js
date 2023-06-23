@@ -45,7 +45,7 @@ root.render(
 
        <Provider store={store}>
 
-         <Appointment/> 
+         <App/> 
 
         {/* <ReactUserData text="This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript  This is the javascript This is the javascript"/> */}
 

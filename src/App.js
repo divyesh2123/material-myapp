@@ -35,13 +35,31 @@ function App() {
 <BrowserRouter>
 
 
-      <EcommerceContext.Provider value={{data,setData,cart,setCart}} >
+      {/* <EcommerceContext.Provider value={{data,setData,cart,setCart}} >
 
       
         <Product/>
 
-      </EcommerceContext.Provider>
+        
+      </EcommerceContext.Provider> */}
+
+      <Link  to="/">Home</Link>  |
       
+      <Link  to="/FormWithValidation">FormWithValidation</Link>
+
+      
+
+
+      <Routes>
+
+
+        <Route path='/' element={<Appointment></Appointment>}/>
+        <Route path='/FormWithValidation' element={<FormWithValidation></FormWithValidation>} />
+
+
+      </Routes>
+      
+     
       </BrowserRouter>
      
     </div>
