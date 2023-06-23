@@ -65,7 +65,7 @@ export default function Employee() {
 
     const removeitem = (index)=> {
 
-      alert("D");
+   
       let d = [...myarray];
       d.splice(index,1);
 
