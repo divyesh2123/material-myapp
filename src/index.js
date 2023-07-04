@@ -35,6 +35,8 @@ import Product from './Product';
 import UserSaga from './UserSaga';
 import ToDoList from './ToDoList';
 import ReactUserData from './ReactUserData';
+import ErrorBoundary from './ErrorBoundary';
+import BuggyCounter from './BuggyCounter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -42,15 +44,20 @@ root.render(
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Container>
       
+      <ErrorBoundary>
 
        <Provider store={store}>
 
-         <App/> 
+       <BuggyCounter />  
+
+         {/* <App/>  */}
 
         {/* <ReactUserData text="This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript This is the javascript  This is the javascript This is the javascript"/> */}
 
 
       </Provider> 
+
+      </ErrorBoundary>
 
       {/* <App/> */}
       
