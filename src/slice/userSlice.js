@@ -1,14 +1,19 @@
 //https://www.cluemediator.com/redux-toolkit-with-async-api-call-using-createasyncthunk
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-export const getUserList = createAsyncThunk('user/getUserList', async (page, { rejectWithValue }) => {
+export const getUserList = createAsyncThunk('user/getUserList', async (page,
+   { rejectWithValue }) => {
     try {
-      const data = await fetch(`https://reqres.in/api/users?per_page=2&page=${page}`).then(y=>y.json());
+      const data = await fetch(`https://reqres.in/api/users?per_page=2&page=${page}`).
+      then(y=>y.json());
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   })
+
+
+
 
 
 
